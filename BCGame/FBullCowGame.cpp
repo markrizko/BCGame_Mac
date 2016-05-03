@@ -13,7 +13,7 @@ int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
 
 int32 FBullCowGame::GetMaxTries() const { 
-	TMap<int32, int32> WordLengthToMaxTries{ { 3, 4 }, { 4,7 }, { 5,10 }, {6, 16}, {7, 20}, {8, 26} };
+    TMap<int32, int32> WordLengthToMaxTries{ {3, 4}, { 4,7 }, {5,10}, {6, 16}, {7, 20}, {8, 26}, {9, 35}, {10, 41} };
 	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
@@ -23,10 +23,28 @@ FBullCowGame::FBullCowGame() { Reset(); }
 void FBullCowGame::Reset()
 {
     
-	ifstream hidden_file("hiddenword.txt");
-    for (int i = 0; i < 6; i++)
-        
-        getline(hidden_file, MyHiddenWord);
+    if (difchoice == 1)
+    {
+    ifstream hidden_file_easy("hiddeneasy.txt");
+        getline(hidden_file_easy, MyHiddenWord);
+    }
+    else if (difchoice == 2)
+    {
+        ifstream hidden_file_med("hiddenmedium.txt");
+        getline(hidden_file_med, MyHiddenWord);
+    }
+    else if (difchoice == 3)
+    {
+        ifstream hidden_file_hard("hiddenhard.txt");
+        getline(hidden_file_hard, MyHiddenWord);
+    }
+    else if (difchoice == 4)
+    {
+        ifstream hidden_file_vhard("hiddenveryhard.txt");
+        getline(hidden_file_vhard, MyHiddenWord);
+    }
+    //for (int i = 0; i < 6; i++)
+    
 	MyCurrentTry = 1;
 	bGameIsWon = false;
 	return;

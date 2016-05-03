@@ -1,6 +1,5 @@
 #pragma once
 #include <string>
-#pragma once
 
 using int32 = int;
 using FString = std::string;
@@ -28,14 +27,16 @@ public:
 	int32 GetCurrentTry() const;
 	int32 GetHiddenWordLength() const;
 	bool IsGameWon() const;
-	EGuessStatus CheckGuessValidity(FString) const; 
+	EGuessStatus CheckGuessValidity(FString) const;
+    int32 difchoice;
+
 	
 	
 	FBullCowCount SubmitValidGuess(FString);
 
-//Ignore and go back to this later
+
 private:
-	int32 MyCurrentTry;
+    int32 MyCurrentTry;
 	FString MyHiddenWord;
     FString RandWord;
 	bool bGameIsWon;
