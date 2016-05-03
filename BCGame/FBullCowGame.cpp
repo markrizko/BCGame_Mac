@@ -22,6 +22,7 @@ FBullCowGame::FBullCowGame() { Reset(); }
 
 void FBullCowGame::Reset()
 {
+    //TODO make a randomizer for each text file for each difficulty
     
     if (difchoice == 1)
     {
@@ -121,7 +122,7 @@ bool FBullCowGame::IsIsogram(FString Word) const
 	TMap<char, bool> LetterSeen;//setup our map
 	for (auto Letter : Word)	//for all letters of the word
 	{
-		Letter = tolower(Letter); //ha;ndle mixed case
+		Letter = tolower(Letter); //handle mixed case
 		if (LetterSeen[Letter]) { return false; } // if the letter is in the map
 		else { LetterSeen[Letter] = true; }
 			
