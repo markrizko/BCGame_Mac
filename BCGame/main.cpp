@@ -97,6 +97,7 @@ void GameDifficulty() {
     cout << "Please choose a difficulty.\n[EASY: 1]\n[MEDIUM: 2]\n[HARD: 3]\n[EXTREME: 4]\n";
     cout << "Difficulty: ";
     cin >> BCGame.difchoice;
+    cin.ignore();
     cout << endl << endl;
 }
 
