@@ -26,21 +26,25 @@ void FBullCowGame::Reset()
     
     if (difchoice == 1)
     {
+        Difficulty = "EASY";
     ifstream hidden_file_easy("hiddeneasy.txt");
         getline(hidden_file_easy, MyHiddenWord);
     }
     else if (difchoice == 2)
     {
+        Difficulty = "MEDIUM";
         ifstream hidden_file_med("hiddenmedium.txt");
         getline(hidden_file_med, MyHiddenWord);
     }
     else if (difchoice == 3)
     {
+        Difficulty = "HARD";
         ifstream hidden_file_hard("hiddenhard.txt");
         getline(hidden_file_hard, MyHiddenWord);
     }
     else if (difchoice == 4)
     {
+        Difficulty = "EXTREME";
         ifstream hidden_file_vhard("hiddenveryhard.txt");
         getline(hidden_file_vhard, MyHiddenWord);
     }

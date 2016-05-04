@@ -46,8 +46,7 @@ void PrintIntro()
 	cout << "  / | BULL |O            O| COW  | \\ " << endl;
 	cout << " *  |-,--- |              |------|  * " << endl;
 	cout << "    ^      ^              ^      ^ " << endl;
-	cout << "Can you guess the " << BCGame.GetHiddenWordLength();
-	cout << " letter isogram I'm thinking of?\n\n";
+	cout << "Can you guess the isogram that I'm thinking of?\n\n";
 	cout << endl;
 	return;
 }
@@ -59,7 +58,7 @@ FText GetValidGuess()
 	EGuessStatus Status = EGuessStatus::Invalid_Status;
 	do {
 
-
+        cout << BCGame.Difficulty << " MODE: " << BCGame.GetHiddenWordLength() << " letters.\n";
 		int32 CurrentTry = BCGame.GetCurrentTry();
 		cout << "Try " << CurrentTry++ << " of "<< BCGame.GetMaxTries()<<". Take a swag: ";
 		getline(cin, Guess);

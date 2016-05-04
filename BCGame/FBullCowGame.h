@@ -29,6 +29,7 @@ public:
 	bool IsGameWon() const;
 	EGuessStatus CheckGuessValidity(FString) const;
     int32 difchoice;
+    FString Difficulty;
 
 	
 	
