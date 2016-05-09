@@ -6,6 +6,7 @@
 #define TMap std::map
 using namespace std;
 using int32 = int;
+using Fstring = string;
 
 
 int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
@@ -13,42 +14,60 @@ int32 FBullCowGame::GetCurrentTry() const { return MyCurrentTry; }
 int32 FBullCowGame::GetHiddenWordLength() const{return MyHiddenWord.length();}
 
 int32 FBullCowGame::GetMaxTries() const { 
-    TMap<int32, int32> WordLengthToMaxTries{ {3, 4}, { 4,7 }, {5,10}, {6, 16}, {7, 20}, {8, 26}, {9, 35}, {10, 41} };
+    TMap<int32, int32> WordLengthToMaxTries{ {3, 4}, { 4,7 }, {5,10}, {6, 13}, {7, 16}, {8, 19}, {9,22}, {10, 25} };
 	return WordLengthToMaxTries[MyHiddenWord.length()];
 }
 
 FBullCowGame::FBullCowGame() { Reset(); }
 
-
 void FBullCowGame::Reset()
 {
-    //TODO make a randomizer for each text file for each difficulty
+    //TODO hint system
+    
+    srand(unsigned(time(NULL)));
+    int randNum;
     
     if (difchoice == 1)
     {
         Difficulty = "EASY";
     ifstream hidden_file_easy("hiddeneasy.txt");
-        getline(hidden_file_easy, MyHiddenWord);
+        Fstring easyRand[ARRAYSIZE];
+        for(int i = 0; i < ARRAYSIZE; i++)
+            getline(hidden_file_easy, easyRand[i]);
+        randNum = rand() % ARRAYSIZE;
+        MyHiddenWord = easyRand[randNum];
     }
     else if (difchoice == 2)
     {
         Difficulty = "MEDIUM";
         ifstream hidden_file_med("hiddenmedium.txt");
-        getline(hidden_file_med, MyHiddenWord);
+        Fstring medRand[ARRAYSIZE];
+        for (int i = 0; i < ARRAYSIZE; i++)
+            getline(hidden_file_med, medRand[i]);
+        randNum = rand() % ARRAYSIZE;
+        MyHiddenWord = medRand[randNum];
     }
     else if (difchoice == 3)
     {
         Difficulty = "HARD";
         ifstream hidden_file_hard("hiddenhard.txt");
-        getline(hidden_file_hard, MyHiddenWord);
+        Fstring hardRand[ARRAYSIZE];
+        for (int i = 0; i < ARRAYSIZE; i++)
+            getline(hidden_file_hard, hardRand[i]);
+        randNum = rand() % ARRAYSIZE;
+        MyHiddenWord = hardRand[randNum];
+
     }
     else if (difchoice == 4)
     {
-        Difficulty = "EXTREME";
+        Difficulty = "VERY HARD";
         ifstream hidden_file_vhard("hiddenveryhard.txt");
-        getline(hidden_file_vhard, MyHiddenWord);
+        Fstring vhardRand[ARRAYSIZE];
+        for (int i = 0; i < ARRAYSIZE; i++)
+            getline(hidden_file_vhard, vhardRand[i]);
+        randNum = rand() % ARRAYSIZE;
+        MyHiddenWord = vhardRand[randNum];
     }
-    //for (int i = 0; i < 6; i++)
     
 	MyCurrentTry = 1;
 	bGameIsWon = false;
@@ -130,9 +149,6 @@ bool FBullCowGame::IsIsogram(FString Word) const
 		if (LetterSeen[Letter]) { return false; } // if the letter is in the map
 		else { LetterSeen[Letter] = true; }
 			
-				//we do NOT have an isogram
-			//otherwise
-				//add the letter to the map as seen
 	}
 	return true;
 }

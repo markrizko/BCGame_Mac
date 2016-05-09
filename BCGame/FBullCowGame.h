@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 
+using namespace std;
 using int32 = int;
 using FString = std::string;
 
@@ -21,7 +22,7 @@ enum class EGuessStatus {
 class FBullCowGame {
 public:
 	FBullCowGame(); //constructor
-
+    # define ARRAYSIZE 15
 	void Reset(); 
 	int32 GetMaxTries() const;
 	int32 GetCurrentTry() const;
@@ -30,15 +31,11 @@ public:
 	EGuessStatus CheckGuessValidity(FString) const;
     int32 difchoice;
     FString Difficulty;
-
-	
-	
 	FBullCowCount SubmitValidGuess(FString);
-
+    FString MyHiddenWord;
 
 private:
     int32 MyCurrentTry;
-	FString MyHiddenWord;
     FString RandWord;
 	bool bGameIsWon;
 

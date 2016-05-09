@@ -1,1 +1,15 @@
+plane
+plant
 house
+board
+mouth
+sword
+chain
+night
+money
+pedal
+table
+cream
+music
+child
+cramp

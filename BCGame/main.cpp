@@ -34,7 +34,7 @@ int main()
 }
 
 
-
+//TODO make optional instruction system
 //introduce the game 
 void PrintIntro() 
 {
@@ -93,7 +93,7 @@ bool AskToPlayAgain()
 }
 
 void GameDifficulty() {
-    cout << "Please choose a difficulty.\n[EASY: 1]\n[MEDIUM: 2]\n[HARD: 3]\n[EXTREME: 4]\n";
+    cout << "Please choose a difficulty.\n[EASY: 1]\n[MEDIUM: 2]\n[HARD: 3]\n[VERY HARD: 4]\n";
     cout << "Difficulty: ";
     cin >> BCGame.difchoice;
     cin.ignore();
@@ -127,5 +127,5 @@ void PlayGame()
 void PrintGameSummary()
 {
 	if (BCGame.IsGameWon()) { cout << "Congrats!! You win!\n\n"; }
-	else { cout << "You lost :/.. Do you wanna try again?\n\n"; }
+    else { cout << "You lost :/..\n The hidden word was: " << BCGame.MyHiddenWord; }
 }
